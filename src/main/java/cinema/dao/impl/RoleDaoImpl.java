@@ -45,10 +45,9 @@ public class RoleDaoImpl implements RoleDao {
     @Override
     public Optional<Role> getByName(String roleName) {
         try (Session session = sessionFactory.openSession()) {
-            Role.RoleName role = Role.RoleName.valueOf(roleName);
             Query<Role> roleQuery =
                     session.createQuery("FROM Role WHERE roleName = :role", Role.class);
-            roleQuery.setParameter("role", role);
+            roleQuery.setParameter("role", roleName);
             return roleQuery.uniqueResultOptional();
         } catch (Exception e) {
             throw new DataProcessingException("Can't find roleName from db by:" + roleName, e);

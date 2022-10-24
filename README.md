@@ -29,7 +29,7 @@ Based on the role, the following functions are available to the user:
 * Controllers - Presentation layer
 
 ### Languages and Tools:
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=java&logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=java&logo=java&logoColor=white)
 ![Sql](https://img.shields.io/badge/SQL-F8F8FF?style=flat&logo=mysql&logoColor=0000CD)
 ![Git](https://img.shields.io/badge/Git-F8F8FF?style=flat&logo=Git&logoColor=FF0000)
 ![Spring](https://img.shields.io/badge/Spring-9ACD32?style=flat&logo=Spring&logoColor=F8F8FF)

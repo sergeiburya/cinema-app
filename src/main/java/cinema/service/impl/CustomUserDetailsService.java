@@ -32,6 +32,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             return builder.build();
 
         }
-        throw new UsernameNotFoundException("User " + userName + " not found to db.");
+        throw new UsernameNotFoundException("User not found.");
     }
 }

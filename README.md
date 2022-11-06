@@ -3,6 +3,9 @@
 
 <h2 align="center">Cinema Management Web Application</h2>
 
+[![Coverage Status](https://coveralls.io/repos/github/sergeiburya/cinema-app/badge.svg?branch=main)](https://coveralls.io/github/sergeiburya/cinema-app?branch=main)
+[![Build Status](https://app.travis-ci.com/sergeiburya/cinema-app.svg?branch=main)](https://app.travis-ci.com/sergeiburya/cinema-app)
+
 ### Description:
 The project implements the basic functionality of a web application for a cinema.
 The application implements user authentication and authorization. By default, two roles are available: administrator (ADMIN - mail: bob@gmail.com, password: bob123) and user (USER - mail: alice@gmail.com, password: alice123).
@@ -55,3 +58,4 @@ You can edit the input data in the [file](src/main/java/cinema/config/DataInitia
 
 ### About me
 I am a beginner java developer, you can learn more about me on my page - [Serhii Buria](https://github.com/sergeiburya).
+

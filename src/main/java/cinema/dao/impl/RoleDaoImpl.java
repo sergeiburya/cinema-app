@@ -4,6 +4,8 @@ import cinema.dao.RoleDao;
 import cinema.exception.DataProcessingException;
 import cinema.model.Role;
 import java.util.Optional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RoleDaoImpl implements RoleDao {
+    private static final Logger logger = LogManager.getLogger(RoleDaoImpl.class);
+
     private final SessionFactory sessionFactory;
 
     @Autowired
@@ -33,6 +37,7 @@ public class RoleDaoImpl implements RoleDao {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("Can't create role" + role, e);
             throw new DataProcessingException("Can't create role" + role, e);
         } finally {
             if (session != null) {
@@ -50,6 +55,7 @@ public class RoleDaoImpl implements RoleDao {
             roleQuery.setParameter("role", Role.RoleName.valueOf(roleName));
             return roleQuery.uniqueResultOptional();
         } catch (Exception e) {
+            logger.error("Can't find roleName from db by:" + roleName, e);
             throw new DataProcessingException("Can't find roleName from db by:" + roleName, e);
         }
     }

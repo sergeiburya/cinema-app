@@ -2,9 +2,10 @@ package cinema.dao.impl;
 
 import cinema.dao.AbstractDao;
 import cinema.dao.UserDao;
-import cinema.exception.DataProcessingException;
 import cinema.model.User;
 import java.util.Optional;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
+    private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
+
     public UserDaoImpl(SessionFactory factory) {
         super(factory, User.class);
     }
@@ -24,7 +27,8 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
             findByEmail.setParameter("email", email);
             return findByEmail.uniqueResultOptional();
         } catch (Exception e) {
-            throw new DataProcessingException("User with email " + email + " not found", e);
+            logger.error("User with email " + email + " not found", e);
+            return Optional.empty();
         }
     }
 
@@ -33,8 +37,8 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
         try (Session session = factory.openSession()) {
             return Optional.ofNullable(session.get(User.class, id));
         } catch (Exception e) {
-            throw new DataProcessingException("Can't get "
-                    + User.class.getSimpleName() + ", id: " + id, e);
+            logger.error("Can't get " + User.class.getSimpleName() + ", id: " + id, e);
+            return Optional.empty();
         }
     }
 }

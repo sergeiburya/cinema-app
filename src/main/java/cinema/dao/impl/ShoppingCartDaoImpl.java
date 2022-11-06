@@ -2,9 +2,10 @@ package cinema.dao.impl;
 
 import cinema.dao.AbstractDao;
 import cinema.dao.ShoppingCartDao;
-import cinema.exception.DataProcessingException;
 import cinema.model.ShoppingCart;
 import cinema.model.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ShoppingCartDaoImpl
         extends AbstractDao<ShoppingCart, Long> implements ShoppingCartDao {
+    private static final Logger logger = LogManager.getLogger(ShoppingCartDaoImpl.class);
+
     public ShoppingCartDaoImpl(SessionFactory factory) {
         super(factory, ShoppingCart.class);
     }
@@ -30,7 +33,8 @@ public class ShoppingCartDaoImpl
             getByUser.setParameter("user", user);
             return getByUser.getSingleResult();
         } catch (Exception e) {
-            throw new DataProcessingException("Not found shopping cart for user " + user, e);
+            logger.error("Not found shopping cart for user " + user, e);
+            return null;
         }
     }
 }

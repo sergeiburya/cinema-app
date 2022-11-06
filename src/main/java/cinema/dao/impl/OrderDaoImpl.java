@@ -6,6 +6,8 @@ import cinema.exception.DataProcessingException;
 import cinema.model.Order;
 import cinema.model.User;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,6 +15,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class OrderDaoImpl extends AbstractDao<Order, Long> implements OrderDao {
+    private static final Logger logger = LogManager.getLogger(OrderDaoImpl.class);
+
     public OrderDaoImpl(SessionFactory factory) {
         super(factory, Order.class);
     }

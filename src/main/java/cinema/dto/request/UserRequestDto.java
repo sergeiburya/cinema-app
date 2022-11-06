@@ -33,4 +33,20 @@ public class UserRequestDto {
     public String getRepeatPassword() {
         return repeatPassword;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
+    }
+
+    public void setRoleId(List<Long> roleId) {
+        this.roleId = roleId;
+    }
 }

@@ -6,13 +6,18 @@ import cinema.exception.DataProcessingException;
 import cinema.model.MovieSession;
 import java.time.LocalDate;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MovieSessionDaoImpl extends AbstractDao<MovieSession> implements MovieSessionDao {
+public class MovieSessionDaoImpl
+        extends AbstractDao<MovieSession, Long> implements MovieSessionDao {
+    private static final Logger logger = LogManager.getLogger(MovieSessionDaoImpl.class);
+
     public MovieSessionDaoImpl(SessionFactory factory) {
         super(factory, MovieSession.class);
     }

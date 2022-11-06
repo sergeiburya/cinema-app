@@ -60,11 +60,6 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, roles, password, email);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -73,10 +68,15 @@ public class User {
             return false;
         }
         User user = (User) obj;
-        return Objects.equals(id, user.id)
+        return Objects.equals(id,user.id)
                 && Objects.equals(email, user.email)
-                && Objects.equals(password, user.password)
+                && Objects.equals(password,user.password)
                 && Objects.equals(roles, user.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, password, roles);
     }
 
     @Override

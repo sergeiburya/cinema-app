@@ -1,13 +1,14 @@
 package cinema.dao;
 
 import cinema.exception.DataProcessingException;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public abstract class AbstractDao<T> {
+public abstract class AbstractDao<T, I extends Serializable> {
     protected final SessionFactory factory;
     private final Class<T> clazz;
 

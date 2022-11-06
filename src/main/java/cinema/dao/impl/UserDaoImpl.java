@@ -11,7 +11,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImpl extends AbstractDao<User> implements UserDao {
+public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
     public UserDaoImpl(SessionFactory factory) {
         super(factory, User.class);
     }
@@ -25,6 +25,16 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
             return findByEmail.uniqueResultOptional();
         } catch (Exception e) {
             throw new DataProcessingException("User with email " + email + " not found", e);
+        }
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        try (Session session = factory.openSession()) {
+            return Optional.ofNullable(session.get(User.class, id));
+        } catch (Exception e) {
+            throw new DataProcessingException("Can't get "
+                    + User.class.getSimpleName() + ", id: " + id, e);
         }
     }
 }

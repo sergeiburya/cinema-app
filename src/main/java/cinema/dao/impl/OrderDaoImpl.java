@@ -12,7 +12,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
+public class OrderDaoImpl extends AbstractDao<Order, Long> implements OrderDao {
     public OrderDaoImpl(SessionFactory factory) {
         super(factory, Order.class);
     }

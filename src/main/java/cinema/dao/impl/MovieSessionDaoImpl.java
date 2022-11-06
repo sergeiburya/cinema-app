@@ -12,7 +12,8 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MovieSessionDaoImpl extends AbstractDao<MovieSession> implements MovieSessionDao {
+public class MovieSessionDaoImpl
+        extends AbstractDao<MovieSession, Long> implements MovieSessionDao {
     public MovieSessionDaoImpl(SessionFactory factory) {
         super(factory, MovieSession.class);
     }

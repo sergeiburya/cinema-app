@@ -17,10 +17,16 @@
     <maven.checkstyle.plugin.configLocation>
       checkstyle.xml
     </maven.checkstyle.plugin.configLocation>
-    <spring.version>5.2.2.RELEASE</spring.version>
+    <spring.version>5.3.23</spring.version>
     <spring.security.version>5.5.0</spring.security.version>
     <hibernate.version>5.6.10.Final</hibernate.version>
-    <jackson.version>2.13.3</jackson.version>
+    <jackson.version>2.14.0</jackson.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <junit.jupiter.version>5.9.1</junit.jupiter.version>
+    <junit.platform.version>1.9.1</junit.platform.version>
   </properties>
 
   <dependencies>
@@ -42,19 +48,18 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>${spring.version}</version>
+      <version>5.7.3</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
-      <version>${spring.version}</version>
+      <version>5.7.3</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>${spring.version}</version>
+      <version>5.7.3</version>
     </dependency>
-
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-dbcp2</artifactId>
@@ -94,7 +99,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>
-      <version>${jackson.version}</version>
+      <version>2.14.0</version>
     </dependency>
     <dependency>
       <groupId>javax.annotation</groupId>
@@ -104,39 +109,58 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.17.2</version>
+      <version>2.19.0</version>
     </dependency>
-      <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter-api</artifactId>
-          <version>5.8.2</version>
-          <scope>test</scope>
-      </dependency>
     <dependency>
       <groupId>org.hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>2.7.1</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.mockito</groupId>
-          <artifactId>mockito-core</artifactId>
-          <version>4.8.0</version>
-          <scope>test</scope>
-      </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>4.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>4.9.0</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
-      <version>2.22.2</version>
+      <version>2.22.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>jetty</artifactId>
-          <version>6.1.25</version>
-          <scope>test</scope>
-      </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
+      <version>${junit.platform.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -154,10 +178,13 @@
         <configuration>
           <repoToken>ojMAAMkch1sVn12p6Jy9ya0hD4VEEylOC</repoToken>
         </configuration>
+<<<<<<< HEAD
+=======
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
+>>>>>>> 2d7dc06c4fd26218f49ac7dda0f374cfcb04eed1
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -179,6 +206,17 @@
           <linkXRef>false</linkXRef>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <configuration>
+          <argLine>
+            --illegal-access=permit
+          </argLine>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -193,7 +231,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.10.1</version>
           <configuration>
             <source>${jdk.version}</source>
             <target>${jdk.version}</target>

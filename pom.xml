@@ -178,13 +178,10 @@
         <configuration>
           <repoToken>ojMAAMkch1sVn12p6Jy9ya0hD4VEEylOC</repoToken>
         </configuration>
-<<<<<<< HEAD
-=======
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
->>>>>>> 2d7dc06c4fd26218f49ac7dda0f374cfcb04eed1
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

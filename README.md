@@ -3,7 +3,7 @@
 
 <h2 align="center">Cinema Management Web Application</h2>
 
-[![Coverage Status](https://coveralls.io/repos/github/sergeiburya/cinema-app/badge.svg?branch=main)](https://coveralls.io/github/sergeiburya/cinema-app?branch=main)
+<!---[![Coverage Status](https://coveralls.io/repos/github/sergeiburya/cinema-app/badge.svg?branch=main)](https://coveralls.io/github/sergeiburya/cinema-app?branch=main)-->
 [![Build Status](https://app.travis-ci.com/sergeiburya/cinema-app.svg?branch=main)](https://app.travis-ci.com/sergeiburya/cinema-app)
 
 ### Description:
